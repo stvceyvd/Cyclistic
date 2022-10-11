@@ -10,7 +10,7 @@ commute to work each day.
 The director of marketing believes Cyclistic's future success depends on maximizing the number of annual memberships. As part of the marketing analyst team, we need understand how casual riders and annual members use Cyclistic bikes differently.
 
 ### Business Task 
-Analyze Cyclistic historical bike trip data to identify trends and better understand the differences between casual riders and annual riders, and apply these insights in new design marketing strategies. 
+Analyze Cyclistic historical bike trip data to identify trends and better understand the differences between **casual riders** and **annual riders**, and apply these insights in new design marketing strategies. 
 
 **Primary Stakeholders** 
 
@@ -29,7 +29,6 @@ achieve them.
 
 ### About the Data
 Provided by Google, the datasource used for this case study can be found [here](https://divvy-tripdata.s3.amazonaws.com/index.html), made available by Motivate International Inc. under this [license](https://ride.divvybikes.com/data-license-agreement). 
-
 
 
 
