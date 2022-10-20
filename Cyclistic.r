@@ -316,48 +316,84 @@ all_trips$weekday <- ordered(all_trips$weekday, levels=c("Sunday", "Monday", "Tu
 13 casual    Saturday       396006     27.8
 14 member    Saturday       344897     14.3
 
-## Looking at the total number of rides and average duration per month by user types (casual and member riders)
-> all_trips %>% 
-+ group_by(user_type, month) %>% 
-+ summarise(total_rides = n(), avg_ride = mean(ride_length)) %>% 
-+ arrange(month) %>% 
-+ print (n=24)
-`summarise()` has grouped output by 'user_type'. You can override using the `.groups` argument.
+## Looking at the number of rides and average trip duration per day in desc order
+all_trips %>%
++ group_by(weekday) %>%
++ summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
++ arrange(desc(total_rides))
+# A tibble: 7 × 3
+  weekday   total_rides avg_ride
+  <ord>           <int>    <dbl>
+1 Saturday       740903     21.5
+2 Sunday         647149     22.0
+3 Wednesday      641370     15.3
+4 Thursday       633963     15.8
+5 Tuesday        622443     15.4
+6 Friday         613845     17.0
+7 Monday         588268     17.4
+
+## Looking at the total number of rides and average duration per month by user types (casual and member riders), in des order
+all_trips %>%
++ group_by(month, user_type) %>%
++ summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
++ arrange(desc(total_rides)) %>% 
++ print(n=24)
+`summarise()` has grouped output by 'month'. You can override using the `.groups` argument.
 # A tibble: 24 × 4
-# Groups:   user_type [2]
-   user_type month total_rides avg_ride
-   <chr>     <chr>       <int>    <dbl>
- 1 casual    01          12464     18.3
- 2 member    01          66575     10.4
- 3 casual    02          14960     21.6
- 4 member    02          72682     10.8
- 5 casual    03          66378     26.7
- 6 member    03         146494     11.9
- 7 casual    04          90806     26.0
- 8 member    04         177719     11.8
- 9 casual    05         216924     28.0
-10 member    05         277159     13.5
-11 casual    06         287543     25.3
-12 member    06         322256     13.9
-13 casual    07         306594     25.3
-14 member    07         324304     13.8
-15 casual    08         265742     23.6
-16 member    08         328576     13.4
-17 casual    09         289979     26.4
-18 member    09         323287     13.3
-19 casual    10         187238     24.6
-20 member    10         284140     12.2
-21 casual    11          69232     20.4
-22 member    11         182919     11.1
-23 casual    12          44649     20.3
-24 member    12         129321     10.7
+# Groups:   month [12]
+   month user_type total_rides avg_ride
+   <chr> <chr>           <int>    <dbl>
+ 1 08    member         328576     13.4
+ 2 07    member         324304     13.8
+ 3 09    member         323287     13.3
+ 4 06    member         322256     13.9
+ 5 07    casual         306594     25.3
+ 6 09    casual         289979     26.4
+ 7 06    casual         287543     25.3
+ 8 10    member         284140     12.2
+ 9 05    member         277159     13.5
+10 08    casual         265742     23.6
+11 05    casual         216924     28.0
+12 10    casual         187238     24.6
+13 11    member         182919     11.1
+14 04    member         177719     11.8
+15 03    member         146494     11.9
+16 12    member         129321     10.7
+17 04    casual          90806     26.0
+18 02    member          72682     10.8
+19 11    casual          69232     20.4
+20 01    member          66575     10.4
+21 03    casual          66378     26.7
+22 12    casual          44649     20.3
+23 02    casual          14960     21.6
+24 01    casual          12464     18.3
+
+## Looking at number of rides and average ride duration per month, in desc order 
+> all_trips %>%
++ group_by(month) %>%
++ summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
++ arrange(desc(total_rides))
+# A tibble: 12 × 3
+   month total_rides avg_ride
+   <chr>       <int>    <dbl>
+ 1 07         630898     19.3
+ 2 09         613266     19.5
+ 3 06         609799     19.3
+ 4 08         594318     17.9
+ 5 05         494083     19.9
+ 6 10         471378     17.1
+ 7 04         268525     16.6
+ 8 11         252151     13.6
+ 9 03         212872     16.5
+10 12         173970     13.2
+11 02          87642     12.7
+12 01          79039     11.6
 
 ## Visualize daily ridership by User Type
 ggplot(all_trips_v2, aes( x = weekday, fill = member_casual)) + geom_bar(position = "dodge") + 
 scale_y_continuous(labels = scales::comma) + 
 labs( x = "Day of the Week", y = "Ride Count", fill = "Member/Casual", title = "Daily Ridership by User Type")
     
-
 ## Visualize average ridership by User Type per day
 all_trips_v2 %>% 
 +      group_by(member_casual, weekday) %>% 
