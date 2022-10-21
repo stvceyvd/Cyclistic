@@ -244,7 +244,7 @@ Summary(all_trips_v2)
 
 ## Compare statistics between casual and member riders 
 
-## Looking at stats of ride duration length 
+## Stats of ride duration length 
 > summary(all_trips$ride_length)  
  Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
    1.000    6.483   11.183   17.880   19.967 1439.367 
@@ -270,7 +270,7 @@ Summary(all_trips_v2)
 1              casual                     1
 2              member                     1
 
-## Looking at the number of user types
+## Number of user types
 table(all_trips$user_type)
 
  casual  member 
@@ -290,7 +290,7 @@ table(all_trips$user_type)
 ## Arranging days of the week 
 all_trips$weekday <- ordered(all_trips$weekday, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
 
-## Looking at the total number of rides and average duration per day of the week by user types (casual and member riders)
+## Number of rides and average duration per day of the week by user types (casual and member riders)
 > all_trips
 +     group_by(user_type, weekday) %>% 
 +     summarise(total_rides = n(), avg_ride = mean(ride_length)) %>% 
@@ -316,7 +316,7 @@ all_trips$weekday <- ordered(all_trips$weekday, levels=c("Sunday", "Monday", "Tu
 13 casual    Saturday       396006     27.8
 14 member    Saturday       344897     14.3
 
-## Looking at the number of rides and average trip duration per day in desc order
+## Number of rides and average trip duration per day in desc order
 all_trips %>%
 + group_by(weekday) %>%
 + summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
@@ -332,7 +332,7 @@ all_trips %>%
 6 Friday         613845     17.0
 7 Monday         588268     17.4
 
-## Looking at the total number of rides and average duration per month by user types (casual and member riders), in des order
+## Number of rides and average duration per month by user types (casual and member riders), in des order
 all_trips %>%
 + group_by(month, user_type) %>%
 + summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
@@ -368,7 +368,7 @@ all_trips %>%
 23 02    casual          14960     21.6
 24 01    casual          12464     18.3
 
-## Looking at number of rides and average ride duration per month, in desc order 
+## Number of rides and average ride duration per month, in desc order 
 > all_trips %>%
 + group_by(month) %>%
 + summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
@@ -389,19 +389,78 @@ all_trips %>%
 11 02          87642     12.7
 12 01          79039     11.6
 
+## Most frequent start hours 
+ all_trips %>% 
++ count(start_hour) %>% 
++ arrange(desc(n)) %>% 
++ slice_head(n=10)
+# A tibble: 10 × 2
+   start_hour      n
+   <chr>       <int>
+ 1 17         462228
+ 2 18         387850
+ 3 16         387676
+ 4 15         310864
+ 5 19         282446
+ 6 14         270340
+ 7 13         266425
+ 8 12         264992
+ 9 11         230787
+10 08         220207
+
+## (10) Most popular stations amongst member riders
+> top_stations <- all_trips %>% 
++ count(start_station_name, user_type)
+> top_stations %>% 
++ filter(user_type == 'member') %>% 
++ arrange(desc(n))
+# A tibble: 1,227 × 3
+   start_station_name           user_type     n
+   <chr>                        <chr>     <int>
+ 1 Kingsbury St & Kinzie St     member    24815
+ 2 Clark St & Elm St            member    21854
+ 3 Wells St & Concord Ln        member    21381
+ 4 Wells St & Elm St            member    18917
+ 5 Clinton St & Madison St      member    18648
+ 6 Clinton St & Washington Blvd member    18466
+ 7 Ellis Ave & 60th St          member    17219
+ 8 Dearborn St & Erie St        member    16875
+ 9 Wells St & Huron St          member    16818
+10 St. Clair St & Erie St       member    16779
+
+## (10) most popular stations amongst casual riders 
+> top_stations %>% 
++ filter(user_type == 'casual') %>% 
++ arrange(desc(n))
+# A tibble: 1,293 × 3
+   start_station_name                 user_type     n
+   <chr>                              <chr>     <int>
+ 1 Streeter Dr & Grand Ave            casual    57146
+ 2 DuSable Lake Shore Dr & Monroe St  casual    30699
+ 3 Millennium Park                    casual    26026
+ 4 Michigan Ave & Oak St              casual    24888
+ 5 DuSable Lake Shore Dr & North Blvd casual    23798
+ 6 Shedd Aquarium                     casual    19687
+ 7 Theater on the Lake                casual    18253
+ 8 Wells St & Concord Ln              casual    16441
+ 9 Clark St & Armitage Ave            casual    13794
+10 Clark St & Lincoln Ave             casual    13727
+
+#### Visualizations with R #####
 ## Visualize daily ridership by User Type
-ggplot(all_trips_v2, aes( x = weekday, fill = member_casual)) + geom_bar(position = "dodge") + 
+ggplot(all_trips, aes( x = weekday, fill = user_type)) + geom_bar(position = "dodge") + 
 scale_y_continuous(labels = scales::comma) + 
-labs( x = "Day of the Week", y = "Ride Count", fill = "Member/Casual", title = "Daily Ridership by User Type")
+labs( x = "Day of the Week", y = "Ride Count", fill = "Member/Casual", title = "Total # of Rides per Day")
     
-## Visualize average ridership by User Type per day
-all_trips_v2 %>% 
-+      group_by(member_casual, weekday) %>% 
-+      summarise(total_rides = n(), avg_ride = mean(ride_length)) %>% 
-+      arrange(weekday) %>% 
-ggplot(all_trips_v2, aes( x = weekday, fill = member_casual)) + geom_bar(position = "dodge") + 
-scale_y_continuous(labels = scales::comma) + 
-labs( x = "Day of the Week", y = "Average Ride Count", fill = "Member/Casual", title = "Average Daily Ridership by User Type")
+
+
+## Visualize average ride duration by User Type per day
+ll_trips %>%
++ group_by(user_type, weekday) %>%
++ summarise(number_of_rides = n(), avg_duration = mean(ride_length)) %>%
++ arrange(weekday, user_type) %>%
++ ggplot(aes(x = weekday, y = avg_duration, fill = user_type)) + geom_col(position = "dodge") + 
+labs (x="Day of the Week", y = "Average Ride Length(min)", title = "Average Ride Length by User Type and Day", fill = "Type of User")
 
 
 
