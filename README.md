@@ -7,7 +7,7 @@ Based in Chicago, Cyclistic is a bike-share program that features more than 5,80
 commute to work each day.
 
 ### Scenario 
-The director of marketing believes Cyclistic's future success depends on maximizing the number of annual memberships. As part of the marketing analyst team, we need understand how consumers use Cyclistic bikes differently to re-design a marketing campaign and convert casual rider into annual riders. 
+The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, the team needs to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, we will re-design a new marketing strategy to convert casual riders into annual members. 
 
 ### Business Task 
 Analyze Cyclistic historical bike trip data to identify trends and better understand the differences between **casual riders** and **annual riders**, and apply these insights in new design marketing strategies. 
@@ -40,7 +40,7 @@ Using the ROCCC approach learned during the course, I will address any limitatio
 
 Overall, this data set does meet the ROCCC standard and is recommendeded to make business decisions. 
 
-For my analysis, I've decided to focus on the data from the past year (Sept 2021 - August 2022), using 12 CSV files from the link shared above. 
+For my analysis, I've decided to **focus** on the data from the past year (Sept 2021 - August 2022), using 12 CSV files from the link shared above. 
 
 ### Data Processing
 For this case study, I used entirely R Studio to process, clean, transform, analyze, and visualize the data. I began the clean process by checking for: empty rows, duplicates, misleading records, N/A values, and any inconsistencies. Check out my changelog [here](https://github.com/stvceyvd/Cyclistic/blob/main/Cyclistic.R).
