@@ -288,7 +288,7 @@ table(all_trips$user_type)
 2 member             1      1435.          9.28        12.8
 
 ## Arranging days of the week 
-all_trips$weekday <- ordered(all_trips$weekday, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+> all_trips$weekday <- ordered(all_trips$weekday, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
 
 ## Number of rides and average duration per day of the week by user types (casual and member riders)
 > all_trips
@@ -317,7 +317,7 @@ all_trips$weekday <- ordered(all_trips$weekday, levels=c("Sunday", "Monday", "Tu
 14 member    Saturday       344897     14.3
 
 ## Number of rides and average trip duration per day in desc order
-all_trips %>%
+> all_trips %>%
 + group_by(weekday) %>%
 + summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
 + arrange(desc(total_rides))
@@ -333,7 +333,7 @@ all_trips %>%
 7 Monday         588268     17.4
 
 ## Number of rides and average duration per month by user types (casual and member riders), in des order
-all_trips %>%
+> all_trips %>%
 + group_by(month, user_type) %>%
 + summarise(total_rides = n(), avg_ride = mean(ride_length)) %>%
 + arrange(desc(total_rides)) %>% 
@@ -447,21 +447,33 @@ all_trips %>%
 10 Clark St & Lincoln Ave             casual    13727
 
 #### Visualizations with R #####
+
 ## Visualize daily ridership by User Type
 ggplot(all_trips, aes( x = weekday, fill = user_type)) + geom_bar(position = "dodge") + 
 scale_y_continuous(labels = scales::comma) + 
 labs( x = "Day of the Week", y = "Ride Count", fill = "Member/Casual", title = "Total # of Rides per Day")
-    
-
 
 ## Visualize average ride duration by User Type per day
-ll_trips %>%
+> all_trips %>%
 + group_by(user_type, weekday) %>%
 + summarise(number_of_rides = n(), avg_duration = mean(ride_length)) %>%
 + arrange(weekday, user_type) %>%
 + ggplot(aes(x = weekday, y = avg_duration, fill = user_type)) + geom_col(position = "dodge") + 
 labs (x="Day of the Week", y = "Average Ride Length(min)", title = "Average Ride Length by User Type and Day", fill = "Type of User")
 
+## Visualize hour trends by user types
+> all_trips %>% 
++ group_by(user_type, time) %>%
++ summarise(total_rides = n()) %>%
++ ggplot(aes(x=time, y=total_rides, color = user_type, group = user_type)) + 
+geom_line() + scale_x_datetime(date_breaks = "1 hour", date_labels = "%H:%M", expand = c(0,0)) + 
+theme(axis.text.x = element_text(angle = 45)) + 
+labs(title ="Hour Trends by User Type", x = "Time (Military Time)", y = "Ride Count") + 
+scale_color_manual(name = "Member/Casual", values = c("#FCB365", "#3EAEE0"), labels = c("Casual", "Member"))
 
-
+## Visualize bike types used by member/casual riders
+ggplot(all_trips, aes( x = rideable_type, fill = user_type)) + geom_bar(position = "dodge") + 
+scale_y_continuous(labels = scales::comma) + 
+labs( x = "Bike Type", y = "Count", fill = "Member/Casual", title = "Bike Types Used by Member/Casual Riders") + 
+theme(axis.text.x = element_text(angle = 45)) + scale_fill_manual(values = c("#FCB365", "#3EAEE0"), labels = c("Casual", "Member"))
 
