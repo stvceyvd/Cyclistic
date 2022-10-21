@@ -30,6 +30,14 @@ achieve them.
 ### About the Data
 Provided by Google, the datasource used for this case study can be found [here](https://divvy-tripdata.s3.amazonaws.com/index.html), made available by Motivate International Inc. under this [license](https://ride.divvybikes.com/data-license-agreement). 
 
+For my analysis, I've decided to focus on the data from the past year (Sept 2021 - August 2022), using 12 CSV files from the link shared above. 
+
+### Data Processing
+For this case study, I used entirely R Studio to process, clean, transform, analyze, and visualize the data. I began the clean process by checking for: empty rows, duplicates, misleading records, N/A values, and any inconsistencies. Check out my changelog. 
+
+### Data Visualizations 
+
+![259573cf-cd5d-4372-bd4b-3275e823a152](https://user-images.githubusercontent.com/109622742/197126364-82d29b41-119c-4ab5-b63e-89e89ee2357f.png)
 
 
 
