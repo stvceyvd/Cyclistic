@@ -4,13 +4,18 @@ In this case study, I will be following the steps of data analysis taught in the
 
 ### About Cyclistic 
 Based in Chicago, Cyclistic is a bike-share program that features more than 5,800 bicycles and 600 docking stations. Cyclistic sets itself apart by offering reclining bikes, hand tricycles, and cargo bikes, making bike-share more inclusive to people with disabilities and riders who can’t use a standard two-wheeled bike. The majority of riders opt for traditional bikes; about 8% of riders use the assistive options. Cyclistic users are more likely to ride for leisure, but about 30% use them to
-commute to work each day.
+commute to work each day. 
+
+Until now, Cyclistic’s marketing strategy relied on building general awareness and appealing to broad consumer segments. One approach that helped make these things possible was the flexibility of its pricing plans: single-ride passes, full-day passes, and annual memberships. Customers who purchase single-ride or full-day passes are referred to as casual riders. Customers who purchase annual memberships are Cyclistic members.
+
+Cyclistic’s finance analysts have concluded that annual members are much more profitable than casual riders. Although the pricing flexibility helps Cyclistic attract more customers, Moreno believes that maximizing the number of annual members will be key to future growth. Rather than creating a marketing campaign that targets all-new customers, Moreno believes there is a very good chance to convert casual riders into members. She notes that casual riders are already aware of the Cyclistic program and have chosen Cyclistic for their mobility needs.
+
 
 ### Scenario 
-The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, the team needs to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, we will re-design a new marketing strategy to convert casual riders into annual members. 
+The director of marketing, Lily Moreno, believes the company’s future success depends on maximizing the number of annual memberships. Therefore, the team needss to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, we will design a new marketing strategy to convert casual riders into annual members. 
 
 ### Business Task 
-Analyze Cyclistic historical bike trip data to identify trends and better understand the differences between **casual riders** and **annual riders**, and apply these insights in new design marketing strategies. 
+Analyze Cyclistic historical bike trip data to identify trends and better understand the differences between **casual riders** and **annual riders**, and apply these insights into new design marketing strategies. 
 
 **Primary Stakeholders** 
 
@@ -32,8 +37,8 @@ Provided by Google, the datasource used for this case study can be found [here](
 
 **Limitations**
 Using the ROCCC approach learned during the course, I will address any limitations within the data set. 
-- Reliability: There is a total of 4,487,941 bike trips to be analyzed in this case study. This is a large dataset that will provide more accurate values to represent the bike trips in Chicago during the period of investigation. 
-- Original: The data is provided by Motivate International Inc., which operates the city of Chicago's Divvy bicycle sharing service powered by Lyft.
+- Reliability: There is a total of 4,487,941 bike trips to be analyzed in this case study. This is a large dataset that will provide more accurate values that will better represent the bike trips in Chicago during the period of investigation. 
+- Original: The data has been collected by the city of Chicago's ("City") Divvy bicycle sharing service, powered by Lyft, indicating there is a direct relationship between the entity and users. Additionally, it is made available by Motivate International Inc. under an agreement license. 
 - Comprehensive: Dataset contains the variables (start/end time, station ids, rideable type, etc.) that are necessary to understand how casual and member riders use bikesharing services differently. 
 - Current: The data is reflects current trends, as the datasource is periodically updated. For my analysis, I have also decided to use the most recent collected data to ensure its relevancy. 
 - Cited: The data was collected by Lyft Bikes and Scoots, LLC ("Bikeshare"), which operates the City of Chicago's Divvy Bicycle Sharing service. This data has been permitted to be available to the public, by the city and under a Data License Agreement, making it a reliable source of data. 
@@ -43,7 +48,7 @@ Overall, this data set does meet the ROCCC standard and is recommendeded to make
 For my analysis, I've decided to **focus** on the data from the past year (Sept 2021 - August 2022), using 12 CSV files from the link shared above. 
 
 ### Data Processing
-For this case study, I used entirely R Studio to process, clean, transform, analyze, and visualize the data. I began the clean process by checking for: empty rows, duplicates, misleading records, N/A values, and any inconsistencies. Check out my changelog [here](https://github.com/stvceyvd/Cyclistic/blob/main/Cyclistic.R).
+For this case study, I used entirely R Studio to process, clean, transform, analyze, and visualize the data. I began the clean process by checking for: empty rows, duplicates, misleading records, N/A values, and any inconsistencies. View my changelog [here](https://github.com/stvceyvd/Cyclistic/blob/main/Cyclistic.R).
 
 ### Data Visualizations 
 
