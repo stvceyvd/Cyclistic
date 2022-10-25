@@ -52,25 +52,26 @@ For this case study, I used entirely R Studio to process, clean, transform, anal
 
 ### Data Visualizations 
 
-![4acee084-ab59-46e8-bc0d-c5f4af5a1ca5](https://user-images.githubusercontent.com/109622742/197196327-21559238-425d-4cf2-a513-b67a2dd55a3e.png)
+![39c6bbf2-9ff4-4265-bc63-6a6214a81840](https://user-images.githubusercontent.com/109622742/197674566-c2cf67b2-bb0e-4ab7-b0c2-5b93f99a095f.png)
 
+![4acee084-ab59-46e8-bc0d-c5f4af5a1ca5](https://user-images.githubusercontent.com/109622742/197674577-1cc3164c-d003-4017-bfaf-3094ddbd1ea4.png)
 
-![538c6b89-a411-4b5f-bc4f-ae0be68772df](https://user-images.githubusercontent.com/109622742/197196342-605b5691-07a5-4220-b8dc-098de4043d4c.png)
+![538c6b89-a411-4b5f-bc4f-ae0be68772df](https://user-images.githubusercontent.com/109622742/197674585-12e4484f-4f3f-4d2a-b75b-1296fda99935.png)
 
+![60322ae7-4dc2-42f0-b120-04b7d5292e8f](https://user-images.githubusercontent.com/109622742/197674594-23e53d7c-3e69-4456-a563-c959be54d71a.png)
 
-![39c6bbf2-9ff4-4265-bc63-6a6214a81840](https://user-images.githubusercontent.com/109622742/197196361-d2ce667d-3ee1-4ad1-9a07-c3b1d4126a14.png)
+![f21fbcfc-b294-456a-a245-75f25ea8d7e0](https://user-images.githubusercontent.com/109622742/197674600-96c25d27-4f77-42a2-a41f-5e99a44c22a5.png)
 
+![fc1a20e8-ef2b-4b8e-af53-79826db4c343](https://user-images.githubusercontent.com/109622742/197674610-76018608-84a5-4588-9766-a529c7c463f2.png)
 
-![fc1a20e8-ef2b-4b8e-af53-79826db4c343](https://user-images.githubusercontent.com/109622742/197196384-ad3e593a-7602-4522-b3b5-eb143948faf6.png)
-
-Insights: 
+## Insights: 
 - Members ride more on weekdays (mainly for commutes during rush hour), compared to casual riders. 
 - Casual riders use the bike-sharing service more on weekends (mainly for leisure).
 - Although members ride more overall, casual riders travel nearly 50% longer than member riders. 
 - For both casual and member riders, travel peak time is around 4:30-6:30 PM. However, we see that there are more casual rides around that time.   
 - Bike-sharing service is more popular in the Spring/Summer/Fall season (April-October) than in the Winter season (November-March). 
 
-Recommendations: 
+## Recommendations: 
 - Run a promotions/sale for an annual membership at the beginning of the surge (April) to entice casual members to subscribe to an annual membership plan for the summer. 
 - Increase the price for single fares on the weekends when there are more casual riders travel. Doing this will encourage casual riders to upgrade their membership plan to save on fares . 
 - Implement pop-up discount ads for fares during peak hours as an incentive to upgrading membership plan. 
