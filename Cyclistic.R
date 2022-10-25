@@ -287,8 +287,12 @@ table(all_trips$user_type)
 1 casual             1      1439.         14.9         25.2
 2 member             1      1435.          9.28        12.8
 
-## Arranging days of the week 
+## Re-ordering the days of the week
 > all_trips$weekday <- ordered(all_trips$weekday, levels=c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))
+
+## Re-ordering the months 
+> all_trips$month <- ordered(all_trips$month, levels = 
+                             c("Sep_21", "Oct_21", "Nov_21", "Dec_21", "Jan_22", "Feb_22", "Mar_22", "Apr_22", "May_22", "Jun_22", "Jul_22", "Aug_22"))
 
 ## Number of rides and average duration per day of the week by user types (casual and member riders)
 > all_trips
@@ -459,7 +463,8 @@ labs( x = "Day of the Week", y = "Ride Count", fill = "Member/Casual", title = "
 + summarise(number_of_rides = n(), avg_duration = mean(ride_length)) %>%
 + arrange(weekday, user_type) %>%
 + ggplot(aes(x = weekday, y = avg_duration, fill = user_type)) + geom_col(position = "dodge") + 
-labs (x="Day of the Week", y = "Average Ride Length(min)", title = "Average Ride Length by User Type and Day", fill = "Type of User")
+labs (x="Day of the Week", y = "Average Ride Length(min)", title = "Average Ride Length by User Type and Day", fill = "Type of User") +
+scale_color_manual(name = "Member/Casual", values = c("#FCB365", "#3EAEE0"), labels = c("Casual", "Member"))
 
 ## Visualize hour trends by user types
 > all_trips %>% 
@@ -476,4 +481,22 @@ ggplot(all_trips, aes( x = rideable_type, fill = user_type)) + geom_bar(position
 scale_y_continuous(labels = scales::comma) + 
 labs( x = "Bike Type", y = "Count", fill = "Member/Casual", title = "Bike Types Used by Member/Casual Riders") + 
 theme(axis.text.x = element_text(angle = 45)) + scale_fill_manual(values = c("#FCB365", "#3EAEE0"), labels = c("Casual", "Member"))
+
+## Visualize average ride duration per month 
+all_trips %>%
++ group_by(user_type, month) %>%
++ summarise(avg_duration = mean(ride_length)) %>%
++ ggplot(aes(x = month, y = avg_duration, fill = user_type)) + 
+geom_col(position = "dodge") + labs (x="Month", y = "Average Ride Length(min)", title = "Average Ride Length by User Type per Month", fill = "Type of User") + 
+theme(axis.text.x = element_text(angle = 45)) + scale_fill_manual(name = "Member/Casual", values = c("#FCB365", "#3EAEE0"), labels = c("Casual", "Member")) 
+
+## Visualize monthly ridership by user type 
+all_trips %>%
++ group_by(user_type, month) %>%
++ summarise(total_rides = n()) %>%
++ ggplot(aes(x = month, y = total_rides, fill = user_type)) + 
+geom_col(position = "dodge") + scale_y_continuous(labels = scales::comma) + 
+labs (x="Month", y = "Ride Count", title = "Monthly Ridership by User Type", fill = "Type of User") + 
+theme(axis.text.x = element_text(angle = 45)) + 
+scale_fill_manual(name = "Member/Casual", values = c("#FCB365", "#3EAEE0"), labels = c("Casual", "Member"))
 
