@@ -72,7 +72,7 @@ For this case study, I used entirely R Studio to process, clean, transform, anal
 - Bike-sharing service is more popular in the Spring/Summer/Fall season (April-October) than in the Winter season (November-March). 
 
 ## Recommendations: 
-- Run a promotions/sale for annual memberships at the beginning of the surge (April) to entice casual members to upgrade their plan for the summer.  
+- Run a promotion/sale for annual memberships at the beginning of the surge (April) to entice casual members to upgrade their plan for the summer.  
 - Increase the price for single fares on the weekends when there are more casual riders traveling. Doing this will encourage casual riders to upgrade their membership plan in order to save and avoid the high cost. 
-- Offer discounts on fares as in incentive to upgrading rider membership plan. 
+- Offer discounts on fares (during peak hour) as in incentive to upgrading rider membership plan. 
 
