@@ -74,5 +74,5 @@ For this case study, I used entirely R Studio to process, clean, transform, anal
 ## Recommendations: 
 - Run a promotion/sale for annual memberships at the beginning of the surge (April) to entice casual members to upgrade their plan for the summer.  
 - Increase the price for single-ride and full-day passes on the weekends when there are more casual riders traveling. Doing this will encourage casual riders to upgrade their membership plan in order to save and avoid the high cost. 
-- Offer discounts on fares (during peak hour) as in incentive if user upgrades to annual membership. 
+- Offer discounts on fares (during peak hour) as an incentive if user upgrades to annual membership. 
 
