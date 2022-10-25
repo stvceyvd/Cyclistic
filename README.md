@@ -63,6 +63,15 @@ For this case study, I used entirely R Studio to process, clean, transform, anal
 
 ![fc1a20e8-ef2b-4b8e-af53-79826db4c343](https://user-images.githubusercontent.com/109622742/197196384-ad3e593a-7602-4522-b3b5-eb143948faf6.png)
 
+Insights: 
+- Members ride more on weekdays (mainly for commutes during rush hour), compared to casual riders. 
+- Casual riders use the bike-sharing service more on weekends (mainly for leisure).
+- Although members ride more overall, casual riders travel nearly 50% longer than member riders. 
+- For both casual and member riders, travel peak time is around 4:30-6:30 PM. However, we see that there are more casual rides around that time.   
+- Bike-sharing service is more popular in the Spring/Summer/Fall season (April-October) than in the Winter season (November-March). 
 
-
+Recommendations: 
+- Run a promotions/sale for an annual membership at the beginning of the surge (April) to entice casual members to subscribe to an annual membership plan for the summer. 
+- Increase the price for single fares on the weekends when there are more casual riders travel. Doing this will encourage casual riders to upgrade their membership plan to save on fares . 
+- Implement pop-up discount ads for fares during peak hours as an incentive to upgrading membership plan. 
 
